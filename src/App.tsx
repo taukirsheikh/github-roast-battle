@@ -119,7 +119,7 @@ function App() {
                       className="w-16 h-16 rounded-full"
                     />
                     <div className="flex-1 p-4 rounded bg-gray-800 border border-gray-700">
-                      <h3 className="font-bold mb-2">@{roast.from} says:</h3>
+                      <h3 className="font-bold mb-2">@{roast.from}</h3>
                       <p className="text-gray-300">{roast.message}</p>
                     </div>
                   </div>
