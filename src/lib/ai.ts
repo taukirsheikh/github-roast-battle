@@ -8,7 +8,7 @@ export async function generateRoast(user1: GitHubUser, user2: GitHubUser, isFirs
 
   const prompt = `
   You are an AI specializing in **hilarious GitHub roast battles**.  
-  Your job is to generate a **funny, lighthearted one-liner roast** for a friendly GitHub showdown.  
+  Your job is to generate a **funny, one-liner roast** for a friendly GitHub showdown.  
 
   🔥 **Roasting from:** ${isFirstUser ? user1.login : user2.login}  
   🎯 **Target:** ${isFirstUser ? user2.login : user1.login}  
@@ -28,7 +28,7 @@ export async function generateRoast(user1: GitHubUser, user2: GitHubUser, isFirs
   **🎯 Target's GitHub Stats (${isFirstUser ? user2.login : user1.login}):**  
   - 📂 Repositories: ${isFirstUser ? user2.public_repos : user1.public_repos}  
   - ⭐ Followers: ${isFirstUser ? user2.followers : user1.followers}  
-  - ✍️ Bio: "${isFirstUser ? user2.bio || "No bio? No personality?" : user1.bio || "No bio? No personality?"}"  
+  - ✍️ Bio: "${isFirstUser ? user2.bio || "No bio? No personality?" : user1.bio || "No bio? No personality?"}"   
   - 🏗️ Account Created: ${new Date(isFirstUser ? user2.created_at : user1.created_at).toLocaleDateString()}  
   - 📊 Projects: [${isFirstUser ? user2.repos.slice(0, 3).map(repo => repo.name).join(", ") : user1.repos.slice(0, 3).map(repo => repo.name).join(", ")}]  
   - 🔧 Pull Requests: ${isFirstUser ? user2.pull_requests.length : user1.pull_requests.length}  
@@ -37,7 +37,7 @@ export async function generateRoast(user1: GitHubUser, user2: GitHubUser, isFirs
   - 🌟 Starred Repos: ${isFirstUser ? user2.starred_repos.length : user1.starred_repos.length}  
   - 🕒 Commits Per Day: ${isFirstUser ? user2.commits_per_day : user1.commits_per_day}  
 
-  Generate a witty, savage, but friendly one-liner roast targeting the opponent's GitHub stats and projects. Keep it fun and playful!
+  Generate a witty, savage, but one-liner roast targeting the opponent's GitHub stats and projects. Keep it fun and playful with roast on various topics based on their profile info and use your own knowledge base!
   `;
 
   try {
