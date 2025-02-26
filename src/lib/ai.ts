@@ -5,6 +5,13 @@ const genAI = new GoogleGenerativeAI('AIzaSyCJ4Lvv83rgEFFlzeYIek-Er3ROR-dvhhc');
 
 export async function generateRoast(user1: GitHubUser, user2: GitHubUser, isFirstUser: boolean): Promise<string> {
   const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+  const generationConfig = {
+    temperature: 1,
+    // topP: 0.95,
+    // topK: 40,
+    // maxOutputTokens: 8192,
+    // responseMimeType: "text/plain",
+  };
 
   const prompt = `
   You are an AI specializing in **hilarious GitHub roast battles**.  
@@ -37,11 +44,20 @@ export async function generateRoast(user1: GitHubUser, user2: GitHubUser, isFirs
   - 🌟 Starred Repos: ${isFirstUser ? user2.starred_repos.length : user1.starred_repos.length}  
   - 🕒 Commits Per Day: ${isFirstUser ? user2.commits_per_day : user1.commits_per_day}  
 
-  Generate a witty, savage, but one-liner roast targeting the opponent's GitHub stats and projects. Keep it fun and playful with roast on various topics based on their profile info and use your own knowledge base!
-  it should look like a chat system where they are roasting each other`;
+  Generate a witty, savage, but one-liner roast targeting the opponent's GitHub stats and projects.
+  Keep it fun and playful with roast on various topics based on their profile info. Make it sound like a direct conversation between the two, and do not add any generic text like "Okay, here we go!" or "Here’s your roast!" 
+
+  Example Roast:  
+  "With that many open issues, you should rename your repo 'Bug Tracker!'"
+  
+  **Don't use bot-like phrasing.** Make it personal and funny based on the provided details.
+
+  `;
 
   try {
-    const result = await model.generateContent(prompt);
+    const result = await model.generateContent({
+      contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig
+    });
     const response = await result.response;
     console.log('Roast generation response:', response);
     return response.text().trim();
