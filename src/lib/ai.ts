@@ -38,7 +38,7 @@ export async function generateRoast(user1: GitHubUser, user2: GitHubUser, isFirs
   - 🕒 Commits Per Day: ${isFirstUser ? user2.commits_per_day : user1.commits_per_day}  
 
   Generate a witty, savage, but one-liner roast targeting the opponent's GitHub stats and projects. Keep it fun and playful with roast on various topics based on their profile info and use your own knowledge base!
-  `;
+  it should look like a chat system where they are roasting each other`;
 
   try {
     const result = await model.generateContent(prompt);
