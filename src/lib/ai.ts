@@ -4,7 +4,7 @@ import { GitHubUser } from './github';
 const genAI = new GoogleGenerativeAI('AIzaSyCJ4Lvv83rgEFFlzeYIek-Er3ROR-dvhhc');
 
 export async function generateRoast(user1: GitHubUser, user2: GitHubUser, isFirstUser: boolean): Promise<string> {
-  const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
   const prompt = `
   You are an AI specializing in **hilarious GitHub roast battles**.  
