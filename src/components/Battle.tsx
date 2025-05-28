@@ -3,6 +3,9 @@ import { getGitHubUser, type GitHubUser } from '../lib/github';
 import { generateRoast } from '../lib/ai';
 import RoastMessage from './RoastMessage';
 import InputField from './InputField';
+import { Github, Swords } from 'lucide-react';
+
+
 
 const MAX_ROASTS = 10;
 
@@ -80,6 +83,11 @@ const Battle = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
+      <div className="flex items-center justify-center gap-4 mb-8">
+          <Github size={40} />
+          <h1 className="text-4xl font-bold">GitHub Roast Battle</h1>
+          <Swords size={40} />
+        </div>
       <div className="flex gap-4 mb-8">
         <InputField value={username1} onChange={setUsername1} placeholder="First GitHub Username" />
         <span className="text-2xl font-bold">VS</span>
